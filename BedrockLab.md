@@ -734,9 +734,9 @@ The JSON request body structure looks like this:
 1. Create a new entity and call it `StableDiffusionRequest`.
 2. Make the entity **non-persistable**.
 3. Add the following attributes:
-   1. `CfgScale`, `Interger`, default value: `empty`
-   2. `Seed`, `Interger`, default value: `empty`
-   3. `Steps`, `Interger`, default value: `empty`
+   1. `CfgScale`, `Integer`, default value: `empty`
+   2. `Seed`, `Integer`, default value: `empty`
+   3. `Steps`, `Integer`, default value: `empty`
 4. Click **OK**.
 
 ![StableDiffusionRequest entity](resources/70_SDRequestEntity.png)
@@ -996,7 +996,7 @@ Now if we would upload an image of our notes, it would generate the image, howev
 
 4. Drag the `Tab container` into the right column of the `Layout grid`.
 5. Double-click the left column, and set it's **Desktop width** to *Auto-fit content*. This will make the column as wide as it's content.
-6. From the **Toolbox**, drag an `Image` the left column.
+6. From the **Toolbox**, drag an `Image` to the left column.
 
 ![Use Layout grid](resources/98_ExtendPage2.png)
 
