@@ -4,12 +4,11 @@
 
 Welcome to the Mendix Amazon Bedrock Lab!
 
-This Lab has been designed to help you get started with using Mendix with [Amazon Bedrock](https://aws.amazon.com/de/bedrock/). After completing this lab, you will have the knowledge required to use the [Mendix Amazon Bedrock connector](https://marketplace.mendix.com/link/component/215042) to invoke generative AI models from your Mendix application and display their responses. In this lab we will focus on the `Claude` and `Stable Diffusion` models. However, you will be able to apply the knowledge from this lab to also use other models available on Amazon Bedrock.
+This Lab has been designed to help you get started with using Mendix with [Amazon Bedrock](https://aws.amazon.com/de/bedrock/). After completing this lab, you will have the knowledge required to use the [Mendix Amazon Bedrock connector](https://marketplace.mendix.com/link/component/215042) to invoke generative AI models from your mendix application and display their responses. In this lab we will focus on the `Claude` and `Stable Diffusion` models. However, you will be able to apply the knowledge from this lab to also use other models available on Amazon Bedrock. 
 
 This lab provides a Mendix module that uses Amazon Textract as starting point. If you want to learn how to use the Mendix Amazon Textract Connector yourself, you cam visit Lab 1.
 
 You will be using the following key services:
-
 - [Amazon Bedrock](https://aws.amazon.com/de/bedrock/)
 - [Amazon Textract](https://aws.amazon.com/de/textract/)
 
@@ -52,6 +51,7 @@ You can create an AWS Account and access AWS Free Tier Offers here: [Learn more 
     - [Extending the page](#extending-the-page)
     - [Run the app and generate images](#run-the-app-and-generate-images)
 
+
 ## 1. Create a new Mendix project
 
 In this lab. you will first create a new Mendix application. Later, you will import a module as a starting point, that you will extend by implementing Amazon Bedrock into the application. To follow this lab, it is required to have **Mendix Studio Pro version 10.4.1** or newer installed. You can download the latest Studio Pro Version here: [Get Mendix Studio Pro!](https://marketplace.mendix.com/link/studiopro/)
@@ -67,17 +67,18 @@ To start Mendix Studio Pro and create a new application follow these steps:
 
 ![Create a Blank Web App](resources/01_BlankWebApp.png)
 
+
 5. In the **App settings** popup, enter `AWSBedrockLab` as **App name**. Then click **Create app**.
 
-Now your project will be created. This can take a moment. Once it's done, the project will be automatically opened in Studio Pro.
+Now your project will be created. This can take a moment. Once it's done, the project will be automatically openend in Studio Pro. 
 
 ## 2. Import the AWS Connectors
 
 In order to enable Mendix Makers to easily integrate AWS services into their Mendix apps, Mendix has built a suite of connectors that are generally available in the [Mendix Marketplace](https://marketplace.mendix.com/). In this lab, you will make use of the following connector:
 
 - [AWS Authentication Connector](https://marketplace.mendix.com/link/component/120333). This module is a prerequisite for every AWS Connector and provides everything you need regarding authentication with AWS.
-- [Amazon Textract Connector](https://marketplace.mendix.com/link/component/205646). This module is used to integrate with the Amazon Textract Service. It is required by the Starting-Point module that you will be working on and that we will import in a bit.
-- [Amazon Bedrock Connector](https://marketplace.mendix.com/link/component/215042). The Amazon Bedrock Connector will be the main building block to allow using Bedrock from within your Mendix application.
+- [Amazon Textract Connector](https://marketplace.mendix.com/link/component/205646). This module is used to integrate with the Amazon Texract Service. It is required by the Starting-Point module that you will be working on and that we will import in a bit.
+- [Amazon Bedrock Connector](https://marketplace.mendix.com/link/component/215042). The Amazon Bedrock Connector will be the main building block to allow using Bedrock from within your Mendix application. 
 
 ### Import AWS Authentication Connector
 
@@ -116,13 +117,13 @@ To verify that you imported the required connectors successfully into you applic
 
 ## 3. Configure the AWS Credentials
 
-For more information on setting up AWS Credentials, please refer to the `AWS Authentication Configuration` page in the `Prerequisites` section of this workshop.
+For more information on setting up AWS Credentials, please refer to the `AWS Authentication Configuration` page in the `Prerequistes` section of this workshop.
 
 **Make sure that your credentials have access to the Amazon Textract and Amazon Bedrock Services.**
 
-To be able to use AWS Services from your Mendix App, you need to configure **either** static or temporary credentials. The following two sections will guide you how to set up both variants. Remember that you need to choose only one of them.
+To be able to use AWS Services from your Menidx App, you need to configure **either** static or temporary credentials. The following two sections will guide you how to set up both variants. Remeber that you need to choose only one of them. 
 
-**Static Credentials** are easier to set up. **Temporary Credentials** require a few more steps to set up, but are the recommended way of authenticating to AWS in a production application.
+**Static Credentials** are easier to set up. **Temporary Credentials** require a few more steps to set up, but are the recommended way of authenticating to AWS in a production application. 
 
 ### Configure static credentials in the Mendix App
 
@@ -136,7 +137,7 @@ To set up static credentials follow these steps:
 6. Navigate to the `Constants`-tab and click **New**.
 7. In the search field, type `AccessKey`, select the `AccessKey` constant of the **AWSAuthenticationConnector** and click **Select**.
 8. In the popup that opens, enter your Access Key in the `Value` field and confirm with **OK**.
-9. Click **New** one more time and this time search for `SecretAccessKey`, select the `SecretAccessKey` constant of the **AWSAuthenticationConnector** and click **Select**.
+9.  Click **New** one more time and this time search for `SecretAccessKey`, select the `SecretAccessKey` constant of the **AWSAuthenticationConnector** and click **Select**.
 10. Enter your Secret Access Key and click **OK**.
 11. Click **OK** one more time to save the configuration.
 12. Make sure, that your configuration is set to `Active`. You can confirm that by checking the the active column has a green check mark.
@@ -176,7 +177,7 @@ To set up temporary credentials follow these steps:
 
 ![Session Credentials 2](resources/08_SessionCredentials2.png)
 
-## 4. Import and configure the Starting-Point
+## 4. Import and configure the Starting-Point.
 
 The goal of this lab is to create an application where you can upload your handwritten notes, extract their information into the application and automatically create a summary of your notes. In the bonus chapter you will further enhance the app by generating an image based on the notes summary, to make the app look even nicer!
 
@@ -252,11 +253,11 @@ The Amazon Textract implementation is already part of the `BedrockLab_StartingPo
 5. In the popup, click **Browse** and upload the SampleNotes image.
 6. Give the notes a name, for example `My Meeting Notes`.
 7. Click **Analyze with Amazon Textract!**
-8. If everything ran successfully, you should now see `My Meeting Notes` on the left side of the page. When you click on it the fully extracted notes will be displayed on the right side of the page.
+8.  If everything ran successfully, you should now see `My Meeting Notes` on the left side of the page. When you click on it the fully extracted notes will be displayed on the right side of the page.
 
 ![Testing App](resources/13_AppRunning.png)
-
-If you get an error, it has most likely to do with your credentials not being set up correctly or not having the required permissions. Please refer to the [Credentials section](#3-configure-the-aws-credentials-credentials).
+    
+If you get an error, it has most likely to do with your credentials not being set up correctly or not having the required permissions. Please refer to the [Credentials section](#3-configure-the-aws-credentials-credentials). 
 
 As you can see, the application already helps you to import your notes quickly. Now let's implement Amazon Bedrock to generate a summary!
 
@@ -276,10 +277,9 @@ First of all, make sure you have access to at least one Claude model via Bedrock
 
 ![Claude Access AWS Console](resources/14_ClaudeAccess.png)
 
-Let's navigate back to Mendix Studio Pro.
+Let's navigate back to Mendix Studio Pro. 
 
-The best way to store your custom Bedrock implementations is to create a new module for that.
-
+The best way to store your custom Bedrock implementations is to create a new module for that. 
 1. Right-click the **App Explorer** and select **Add module**.
 2. Give your module a name, for example `BedrockImplementation`.
 3. Confirm by clicking **OK**.
@@ -287,8 +287,7 @@ The best way to store your custom Bedrock implementations is to create a new mod
 
 ![BedrockImplementation New](resources/15_BedrockImplementationNew.png)
 
-To organize the work better, let's create two folders in the newly created module.
-
+To organize the work better, let's create two folders in the newly created module. 
 1. Right-click the `BedrockImplementation` (or the custom name you chose) module.
 2. Select **Add Folder** and call it `Claude`.
 3. Click **OK**.
@@ -297,17 +296,17 @@ To organize the work better, let's create two folders in the newly created modul
 
 ![BedrockImplementation Folders](resources/16_BedrockImplementationFolders.png)
 
-This is the folder structure we will be working with for the Claude implementation.
+This is the folder structure we will be working with for the Claude implementation. 
 
-### Inspect the Bedrock Connector
+### Inspect the Bedrock Connector 
 
-Expand the ***AmazonBedrockConnector** module, found in **App Explorer** --> **Marketplace modules**. In the **Operations** there is a Microflow called `POST_V1_InvokeModel_Generic`. This Microflow can be used to make a call to Amazon Bedrock and contains everything that is generic to all the models. We need to implement some additional logic around it that contains everything specific to the Claude model.
+Expand the ***AmazonBedrockConnector** module, found in **App Explorer** --> **Marketplace modules**. In the **Operations** there is a Microflow called `POST_V1_InvokeModel_Generic`. This Microflow can be used to make a call to Amazon Bedrock and contains everything that is generic to all the models. We need to implement some additional logic around it that contains everything specific to the Claude model. 
 
-![Bedrock Connector Operations](resources/17_BedrockConnectorOperations.png)
+![Bedrock Connector Operations](resources/17_BedorckConnectorOperations.png)
 
 Next, open the **Domain model** of the **AmazonBedrockConnector**. In the `Invoke Model` section there are two entities: `InvokeModelGenericRequest` and `InvokeModelGenericResponse`. These serve as request and response types of the Invoke Model operation. The request object has an attribute called `RequestBody`, whereas the response entity has an attribute called `ResponseBody`. The goal is to create some additional logic that let's us create a Claude-specific request body in a reusable way. Additionally, we want to find a way to handle the specific Claude-response body in a easy-to-use manner.
 
-![Bedrock Connector Domain Model](resources/18_BedrockConnectorDM.png)
+![Bedrock Connector Domain Model](resources/18_BedorckConnectorDM.png)
 
 ### Build the Claude-specific logic
 
@@ -326,13 +325,13 @@ Let's have a look at how the request body of the Claude model looks like:
         ],
     }
 
-With this JSON-structure in mind, let's create the request entity specific to the Claude model.
+With this JSON-structure in mind, let's create the request entity specific to the Claude model. 
 
-1. In the domain model, find the Toolbox pane on the right and drag an **Entity** somewhere into the domain model.
+1. In the domain model, find the Toolbox pane on the right and drag an **Entity** somewhere into the domain model. 
 2. Double-click it to open its properties.
 3. Change the name to `ClaudeRequest`.
 4. Set it's persistability to `Off`, by clicking the slider next to the `Persistable` section. Non-persistable objects only exist in memory and are never written to the database. This is something we want in this case, because we never want to store our requests and responses directly in the database. Instead, we want to provide a flexible way of integrating with the Claude model. If something should be stored in the database, then this should be implemented somewhere else as part of the custom application-logic.
-5. Create a new attribute by clicking **New** in the `Attributes` tab.
+5. Create a new attribute by clicking **New** in the `Attributes` tab. 
 6. Call it `Prompt`, leave it's type as `String` and set it's length to `unlimited`.
 7. Additionally, create the following attributes using the same steps:
    1. Name: `MaxTokenToSample`, Type: `Integer`, Default value: *empty* (remove the *0*)
@@ -343,7 +342,7 @@ With this JSON-structure in mind, let's create the request entity specific to th
 ![Claude Request 1](resources/19_ClaudeRequest1.png)
 
 8. Confirm and save by clicking **OK**.
-9. Note how the entity changed it's color from blue to orange? That is how Mendix tells you that it is a non-persistable entity. If your entity is still blue, check step 4 again and make sure you change the persistability setting.
+9.  Note how the entity changed it's color from blue to orange? That is how Mendix tells you that it is a non-persistable entity. If your entity is still blue, check step 4 again and make sure you change the persistability setting.
 
 ![Claude Request 2](resources/20_ClaudeRequest2.png)
 
@@ -353,14 +352,14 @@ Now we have the first part of the request structure. The String array *stop_sequ
 2. Enter `StopSequences` for it's name.
 3. Add the attribute `StopSequence` (`String`, length: `unlimited`).
 
-To connect both, draw a line from `StopSequence` to `ClaudeRequest`. This will add an one-to-many association between the two entities. This way, many `StopSequence` objects can be associated to one `ClaudeRequest` object. It should look like this:
+To connect both, draw a line from `StopSequence` to `ClaudeRequest`. This will add an one-to-many association between the two entites. This way, many `StopSequence` objects can be associated to one `ClaudeRequest` object. It should look like this:
 
 ![Stop Sequence](resources/21_StopSequence.png)
 
-To write the logic, you need to create a new Microflow. This is the place where we model logic in Mendix - similar to a function or method in a traditional programming language.
+To write the logic, you need to create a new Microflow. This is the place where we model logic in Mendix - similar to a function or method in a traditional programming language. 
 To do so, follow these steps:
 
-1. Right-click the `Claude` folder and select **Add Microflow**.
+1. Right-click the `Claude` folder and select **Add microflow**.
 2. Call the Microflow `Claude_GetResponse` and click **OK**.
 3. Now a new empty Microflow should open in the main section of Studio Pro.
 
@@ -370,19 +369,19 @@ To do so, follow these steps:
 
 ![The Toolbox](resources/67_Toolbox.png)
 
-5. In the **Toolbox**, search for the `Invoke Model Generic` action and drag it onto your Microflow.
+5. In the **Toolbox**, search for the `Invoke Model Generic` action and drag it onto your microflow.
 
 ![Invoke Model Generic](resources/23_Claude_GetResponse_1.png)
 
 6. You'll notice you got some errors, this is because the activity expects some input parameters that aren't available yet. So let's add them!
 7. So want this Microflow to be reusable for all different kinds of requests in different AWS Regions. We can achieve that by adding these two variables as parameters.
-8. From the topbar, drag the yellow parameter symbol to somewhere on the pane, and double click it.
+8. From the topbar, drag the yellow paramter symbol to somewhere on the pane, and double click it.
 
 ![Parameters1](resources/24_Claude_GetResponse_2.png)
 
 9. The `Data Type` will be already set to `Object`. Click **Select** and select the `ClaudeRequest` and confirm with **OK**.
-10. Add another parameter and set it's `Data Type` to `Enumeration`.
-11. CLick **Select** and search for the `ENUM_Region` enumeration, which is located in the `AWSAuthenticationConnector` and contains all the available AWS Regions.
+10.  Add another paramter and set it's `Data Type` to `Enumeration`. 
+11. CLick **Select** and search for the `ENUM_Region` enumeration, which is located in the `AWSAuthenticationConnector` and contains all the available AWS Regions. 
 
 ![Parameters2](resources/25_Claude_GetResponse_3.png)
 
@@ -394,15 +393,15 @@ Next to the AWS Region, the `Invoke Model Generic` action also expects an `Invok
 
 2. Double-click the `Create object` activity and click **Select**.
 3. Search for the `InvokeModelGenericRequest` as the object to create and click **Select**.
-4. Click **New** to populate an attribute value and select `ModelId` from the dropdown.
-5. Set it's value to `'anthropic.claude-v2'`. If you have access to a different Claude model, make sure to set the `ModelId` accordingly!
+4. Click **New** to populate an attribute value and select `ModelId` from the dropdown. 
+5. Set it's value to `'anthropic.claude-v2'`. If you have access to a different Claude model, make sure to set the `ModelId` accrodingly!
 6. Click **OK** and then click **OK** again to save the configuration and close the popup.
 
 ![Create InvokeModelGenericRequest](resources/27_Claude_GetResponse_5.png)
 
 The next step is to create the credentials, which the `AWSAuthenticationConnector` handles  for us. We only need to:
 
-1. In the **Toolbox** search for `GetStaticCredentials` or `GetTemporaryCredentials` (depending on your choice which type of credentials to use) and drag the activity onto your Microflow, before the `InvokeModelGeneric` activity.
+1. In the **Toolbox** search for `GetStaticCredentials` or `GetTemporaryCredentials` (depending on your choice which type of credentials to use) and drag the activity onto your Microflow, before the `InvokeModelGeneric` activity. 
 2. If your are using **Temporary Credentials**, you need to provide the AWS Region as parameter:
    1. Double-click it, and then double-click on the `Region` parameter.
    2. It should auto-fill with `$ENUM_Region`, click **OK**.
@@ -412,7 +411,7 @@ The next step is to create the credentials, which the `AWSAuthenticationConnecto
 
 Now we have all the parameters available that the `Invoke Model Generic` action expects:
 
-1. Double-click the `Invoke Model Generic` action.
+1. Double-click the `Invoke Model Generic` action. 
 2. Populate it's parameters as follows:
    1. **InvokeModelGenericRequest**: Should auto-fill (`NewInvokeModelGenericRequest`)
    2. **Credentials**: Should auto-fill (`Credentials`)
@@ -448,13 +447,13 @@ From the request-side, it's looking good, however, we are still missing one cruc
 
 ![Create JSON snippet 2](resources/32_JSONSnippetRequest2.png)
 
-6. Next, right-click the **Resources** folder and click **Add other** --> **Export mapping**. An export mapping allows us to map the information of a Mendix object to, for example, a JSON string.
+6. Next, right-click the **Resources** folder and click **Add other** --> **Export mapping**. An export mapping allows us to map the information of a Mendix object to, for example, a JSON string. 
 
 ![Create export mapping](resources/33_EXM.png)
 
 7. Enter `EXM_Claude` as the name and click **OK**.
 8. In the **Schema source** section, select **JSON structure** and click on **Select** to choose the JSON structure `JSON_Claude_Request` we just created.
-9. In the **Schema elements** sections, click **Check all** and confirm with **OK**.
+9.  In the **Schema elements** sections, click **Check all** and confirm with **OK**.
 
 ![Create export mapping 2](resources/34_EXM2.png)
 
@@ -468,19 +467,19 @@ Now the page displays a visual representation of the JSON.
 
 Now the **Export mapping** will map the `ClaudeRequest` object into the correct JSON structure. Let's implement it in the Microflow.
 
-1. Open the `Claude_GetResponse` Microflow.
-2. From the **Toolbox** search for `Export with mapping` and drag the activity to the beginning of the Microflow.
+1. Open the `Claude_GetResponse` Microflow. 
+2. From the **Toolbox** search for `Export with mapping` and drag the activity to the beginning of the Microflow. 
 3. Double-click on it to open it's properties.
 4. For the **Mapping**, select the `EXM_Claude` export mapping we just created.
 5. As the **Parameter** select `ClaudeRequest`, which should be the only one available in the dropdown.
 6. Set **Store in** to **String Variable**.
 7. Give the variable a comprehensive name, like `RequestBody`.
 
-![Use export mapping in Microflow](resources/36_Claude_GetResponse_9.png)
+![Use export mapping in microflow](resources/36_Claude_GetResponse_9.png)
 
 The last step for the request is to store the request body in the `RequestBody` attribute of the `InvokeModelGenericRequest` object:
 
-1. Double-click the `NewInvokeModelGenericRequest` object.
+1. Double-click the `NewInvokeModelGenericRequest` object. 
 2. Click **New** and select the `RequestBody` as **Member**.
 3. In the **Value** field, type `$RequestBody`, to pass over the value of the `RequestBody` string variable that get's returned by the export mapping in the previous step.
 
@@ -490,7 +489,7 @@ The last step for the request is to store the request body in the `RequestBody` 
 
 Now everything we need for the request is set up!
 
-The Claude-specific response body is returned as an attribute of the `InvokeModelGenericResponse`. Let's add some logic to map that to it's own entity, too.
+The Claude-specific response body is returned as an attribute of the `InvokeModelGenericResponse`. Let's add some logic to map that to it's own entity, too. 
 
 The Response structure of the Claude model looks like this:
 
@@ -527,14 +526,14 @@ Since we get response body as a JSON-string, now we need to do the mapping the o
 
 ![Create import mapping](resources/41_ImportMappingClaude.png)
 
-8. Go the **Connector** tab on the right pane of Studio pro, and drag the `ClaudeResponse` entity next to the `Root` and map the attributes accordingly.
-9. Click **OK**.
+8. Go the **Connector** tab on the right pane of Studio pro, and drag the `ClaudeResponse` entity next to the `Root` and map the attributes accordingly. 
+9.  Click **OK**.
 
 ![Import mapping response](resources/42_ImportMappingClaude2.png)
 
 The last thing we need to do is to configure the `Claude_GetResponse` Microflow so that it returns an `ClaudeResponse` object.
 
-1. Open the `Claude_GetResponse` Microflow.
+1. Open the `Claude_GetResponse` Microflow. 
 2. From the **Toolbox**, drag a `Create Variable` activity to your Microflow, right after the `Invoke Model Generic` action.
 3. Double-click it to open it.
 4. Set it's type to `String`.
@@ -545,11 +544,11 @@ The last thing we need to do is to configure the `Claude_GetResponse` Microflow 
 
 7. From the **Toolbox**, search for `Import with mapping` and drag the activity all the way to the end of the Microflow, right before the **End Event** (red circle).
 8. Double-click it and choose `ResponseBody` in the **Variable** dropdown.
-9. For the **Mapping** select the `IMM_Claude` import mapping.
+9.  For the **Mapping** select the `IMM_Claude` import mapping.
 10. Set **Store in variable** to **Yes** and enter `ClaudeResponse` as the **Variable name**.
 11. Click **OK**.
 
-![Import mapping in Microflow](resources/44_Claude_getResponse12.png)
+![Import mapping in microflow](resources/44_Claude_getResponse12.png)
 
 Now we map the response directly to an `ClaudeResponse` object. Let's set it as return value:
 
@@ -568,23 +567,23 @@ Now that the logic to use Claude in our Mendix app is set up, let's add the summ
 Before we can add the logic to create the summary we need a place to store the summary:
 
 1. Navigate to the `BedrockLab_StartingPoint` module and open the **Domain model**.
-2. You'll see there is a `Notes` entity, which contains the images, that are uploaded to the app. It is associated to the `NotesExtraction` entity, which contains all the information of the *digital* notes.
-3. Double-click the `NotesExtraction` entity to open it's properties.
+2. You'll see there is a `Notes` entity, which contains the images, that are uploaded to the app. It is associated to the `NotesExtraction` entity, which contains all the information of the *digital* notes. 
+3. Double-click the `NotesExtraction` entity to open it's properties. 
 4. Next to the **Topic** and **Content**, let's add an additional attribute to store the summary.
 5. Click **New** in the **Attributes** tab and call the new attribute `Summary`. Leave it as String and set the length to **unlimited**.
 
 ![Add Summary attribute](resources/46_NotesExtractionAddSummary.png)
 
-![NotesExtraction entity](resources/47_NotesExtractionEntity.png)
+![NotesExtraction enotity](resources/47_NotesExtractionEntity.png)
 
-Now that we have a place to store the summary, we can finally implement it. Open the Microflow called `ACT_Notes_Save`. This is the Microflow that gets called when an user uploads a new note-image to the app. It contains a Sub-Microflow called `NotesExtraction_AnalyzeDocument` which contains the **Amazon Textract Implementation**. Next to that, we want to add an additional Sub-Microflow which handles the summary creation using Bedrock. To do so, perform the following steps:
+Now that we have a place to store the summary, we can finally implement it. Open the Microflow called `ACT_Notes_Save`. This is the microflow that gets called when an user uploads a new note-image to the app. It contains a Sub-Microflow called `NotesExtraction_AnalyzeDocument` which contains the **Amazon Textract Implementation**. Next to that, we want to add an additional Sub-Microflow which handles the summary creation using Bedrock. To do so, perform the following steps:
 
 1. In the `BedrockLab_StartingPoint` module, expand the `Objects` folder and then expand the `NotesExtraction` folder.
-2. Right-click the `NotesExtraction` folder and then click **Add Microflow**, call it `NotesExtraction_GenerateSummary` and click **OK**. The Microflow should open automatically.
+2. Right-click the `NotesExtraction` folder and then click **Add microflow**, call it `NotesExtraction_GenerateSummary` and click **OK**. The Microflow should open automatically.
 
-![Created GenerateSummary Microflow](resources/48_GenerateSummaryMF.png)
+![Created GenerateSummary microflow](resources/48_GenerateSummaryMF.png)
 
-3. Add an input parameter, by dragging the yellow parameter symbol from the topbar to your Microflow pane.
+3. Add an input parameter, by dragging the yellow paramter symbol from the topbar to your microflow pane.
 4. Double-click it and select `Notes` as it's entity and click **OK**.
 
 ![Notes parameter added](resources/49_GenerateSummaryMF2.png)
@@ -595,40 +594,40 @@ Now that we have a place to store the summary, we can finally implement it. Open
 
 ![Retrieve over association](resources/51_GenerateSummaryMF4.png)
 
-![Retrieve in Microflow](resources/52_GenerateSummaryMF5.png)
+![Retrieve in microflow](resources/52_GenerateSummaryMF5.png)
 
-1. From the **Toolbox**, drag a `Create variable` activity in place it in the Microflow.
-2. Double-click it, set the **Data Type** to `Enumeration` and select the `ENUM_Region` enumeration from the `AWSAuthenticationConnector`.
-3. For it's value, enter the region where you have access to Bedrock. To enter the region, you can click **Generate** and select the correct region from the dropdown.
-4. Give the variable a comprehensive name, for example `AWS_Region` and click **OK**.
+1. From the **Toolbox**, drag a `Create variable` activity in place it in the Microflow. 
+2.  Double-click it, set the **Data Type** to `Enumeration` and select the `ENUM_Region` enumeration from the `AWSAuthenticationConnector`.
+3.  For it's value, enter the region where you have access to Bedrock. To enter the region, you can click **Generate** and select the correct region from the dropdown. 
+4.  Give the variable a comprehensive name, for example `AWS_Region` and click **OK**.
 
 ![AWS Region variable](resources/53_GenerateSummaryMF6.png)
 
-5. From the **Toolbox**, drag a `Create object` activity to the Microflow.
-6. Double-click it and select `ClaudeRequest` as the entity to create.
-7. Click **New** and select `Prompt` as the Member. Give it the following value:
+5.  From the **Toolbox**, drag a `Create object` activity to the Microflow. 
+6.  Double-click it and select `ClaudeRequest` as the entity to create.
+7.  Click **New** and select `Prompt` as the Member. Give it the following value:
 
         'Human: Create a summary of the following notes: ' + $NotesExtraction/Content + ' Assistant:'
 
-8. The Claude Model expects the *Human:* and *Assistant* Tags in the prompt. The *$NotesExtraction/Content* allows us to dynamically pass the content that has been extracted to the prompt.
-9. For the remaining attributes you can use some default values:
-    1. **MaxTokensToSample**: `200`
-    2. **Temperature**: `0.5`
-    3. **TopK**: `250`
-    4. **TopP**: `1`
+8.  The Claude Model expects the *Human:* and *Assistant* Tags in the prompt. The *$NotesExtraction/Content* allows us to dynamically pass the content that has been extracted to the prompt. 
+9.  For the remaining attributes you can use some default values:
+    1.  **MaxTokensToSample**: `200`
+    2.  **Temperature**: `0.5`
+    3.  **TopK**: `250`
+    4.  **TopP**: `1`
 10. Click **OK**.
 
 ![Create Claude Request](resources/54_GenerateSummaryMF7.png)
 
-![Claude Request in Microflow](resources/55_GenerateSummaryMF8.png)
+![Claude Request in microflow](resources/55_GenerateSummaryMF8.png)
 
-11. Now drag in the `Claude_GetResponse` Microflow we created earlier to the end of the Microflow. It should be located in the `BedrockImplementation` module, in the `Claude` folder.
+11. Now drag in the `Claude_GetResponse` Microflow we created earlier to the end of the Microflow. It should be located in the `BedrockImplementation` module, in the `Claude` folder. 
 12. Double-click it and pass the values for the parameters. Both should auto-fill.
 13. Name the return variable `ClaudeResponse` and click **OK**.
 
 ![Add Claude_GetResponse](resources/56_GenerateSummaryMF9.png)
 
-![CLaude_GetResponse in Microflow](resources/57_GenerateSummaryMF10.png)
+![CLaude_GetResponse in mircoflow](resources/57_GenerateSummaryMF10.png)
 
 14. From the **Toolbox**, drag a `Change object` activity to the very end of the Microflow, right *before* the **End Event** (red circle).
 15. Double-click and select `NotesExtraction` as the **Object**.
@@ -639,28 +638,28 @@ Now that we have a place to store the summary, we can finally implement it. Open
 
 ![Add Change activity](resources/58_GenerateSummaryMF11.png)
 
-![Change activity in Microflow](resources/59_GenerateSummaryMF12.png)
+![Change activity in microflow](resources/59_GenerateSummaryMF12.png)
 
-This is all the logic we need! Now let's add this Microflow to the `ACT_Notes_Save` Microflow, so it generates a summary for every note that is uploaded to the application.
+This is all the logic we need! Now let's add this Microflow to the `ACT_Notes_Save` Microflow, so it generates a summary for every note that is uploaded to the application. 
 
 1. Open the `ACT_Notes_Save` Microflow located in `BedrockLab_StartingPoint` module --> **Pages** --> **Notes**.
 2. Drag the `NotesExtraction_GenerateSummary` Microflow right *before* the **Close Page** activity.
 3. Double-click it and configure the `Notes` parameter. It should auto-fill. Then click **OK**.
 
-![Complete to ACT_Notes_Save Microflow](resources/60_GenerateSummaryMF13.png)
+![Complete to ACT_Notes_Save microflow](resources/60_GenerateSummaryMF13.png)
 
-Save your work and you're all set! The last thing that is missing is to display the summary to the end-user on the page!
+Save your work and you're all set! The last thing that is missig is to display the summary to the end-user on the page!
 
 ### Extend the page
 
 Let's make some additions to the `NotesExtraction_Home` page. We want to display the `Summary` attribute of the `NotesExtraction` object, that the user selects on the list-view on the left.
 To let the user choose, if he wants to see the full notes or the summary, we could use a **Tab container**. To implement it follow these steps:
 
-1. Make sure you are on the `NotesExtraction_Home` page.
+1. Make sure you are on the `NotesExtraction_Home` page. 
 
 ![NotesExtraction_Home page](resources/61_ExtendingPage.png)
 
-2. From the **Toolbox**, drag a `Tab container` to the **Data view** on the right side of the page, inside the container that is already there.
+1. From the **Toolbox**, drag a `Tab container` to the **Data view** on the right side of the page, inside the container that is already there.
 
 ![Add tab container](resources/62_ExtendingPage2.png)
 
@@ -684,7 +683,7 @@ To let the user choose, if he wants to see the full notes or the summary, we cou
 
 ### Run the app
 
-And that is all we need to let Bedrock generate a summary of each note that is uploaded and display it on the page for the user to see.
+And that is all we need to let Bedrock generate a summary of each note that is uploaded and display it on the page for the user to see. 
 
 Now, run your app and try it out! If everything was set up correctly, you should now be able to see the **Full Notes** and a **Summary** for every Image of your notes you upload to the app!
 
@@ -692,7 +691,7 @@ Now, run your app and try it out! If everything was set up correctly, you should
 
 ## 7. Bonus Chapter: Integrate Stable Diffusion to create Images based on the summary
 
-This is a bonus chapter, that will show you how to use the image generation model **Stable Diffusion** from your Mendix application, using the **Amazon Bedrock Connector**.
+This is a bonus chapter, that will show you how to use the image generation model **Stable Diffusion** from your Mendix application, using the **Amazon Bedrock Connector**. 
 
 The approach will be similar to the implementation of the **Claude** model, so the repetitive steps will have less detailed instructions. When problems arise, please have a look at the corresponding section of the [Claude chapter](#5-create-the-logic-to-implement-the-claude-model).
 
@@ -735,9 +734,9 @@ The JSON request body structure looks like this:
 1. Create a new entity and call it `StableDiffusionRequest`.
 2. Make the entity **non-persistable**.
 3. Add the following attributes:
-   1. `CfgScale`, `Integer`, default value: `empty`
-   2. `Seed`, `Integer`, default value: `empty`
-   3. `Steps`, `Integer`, default value: `empty`
+   1. `CfgScale`, `Interger`, default value: `empty`
+   2. `Seed`, `Interger`, default value: `empty`
+   3. `Steps`, `Interger`, default value: `empty`
 4. Click **OK**.
 
 ![StableDiffusionRequest entity](resources/70_SDRequestEntity.png)
@@ -746,10 +745,10 @@ The JSON request body structure looks like this:
 6. Make it **non-persistable**.
 7. Add one `String` attribute called `Prompt` with `unlimited` length.
 
-The *text_prompts* is an array of prompts, so we could send multiple prompts in one go. For now, we just want to invoke the model with one prompt at a time, this means that we need to add a 1-1 association to the entities we've just created.
+The *text_prompts* is an array of prompts, so we could send multiple prompts in one go. For now, we just want to invoke the model with one prompt at a time, this means that we need to add a 1-1 association to the entities we've just created. 
 
 8. Drag a line from one entity to the other. Be default, this will be a 1-* (One to many) association.
-9. To change that, double-click the new association, and in the **Multiplicity** section, select **[1 - 1]** and click **OK**.
+9. To change that, double-click the new association, and in the **Mulitplicity** section, select **[1 - 1]** and click **OK**.
 
 ![One to one association](resources/71_1to1.png)
 
@@ -783,7 +782,7 @@ The response JSON looks like follows:
           ]
         }
 
-Let's create two more entities to reflect the response structure in the domain model:
+Let's create two more entites to reflect the response structure in the domain model:
 
 1. Create a new entity and call it `StableDiffusionResponse`.
 2. Make it **non-persistable**.
@@ -800,7 +799,7 @@ Let's create two more entities to reflect the response structure in the domain m
 7. Click **OK**
 8. Create a One-to-many association by dragging a line from the `StableDiffusionImageData` entity to the `StableDiffusionResponse` entity.
 
-It needs to be One-to-many, because technically multiple images could be returned by a single invocation.
+It needs to be One-to-many, because technically multiple images could be returned by a single invokation. 
 
 ![Stable Diffusion Domain model - response](resources/75_SDDomainModelResponse.png)
 
@@ -816,11 +815,11 @@ Now, let's add the **JSON structure** and **Import mapping**:
 ![Import mapping 1](resources/76_IMM_SD1.png)
 
 7. From the **Connector** tab, drag the `StableDiffusionResponse` entity next to `Root` and map the attribute.
-8. And the `StableDiffusionImageData` entity next to `Artifact` and also map the 3 attributes.
+8. And the `StableDiffusionImageData` entity next to `Artficat` and also map the 3 attributes.
 
 ![Import mapping 2](resources/77_IMM_SD2.png)
 
-Well done! Now we have all we need for the request and response to start modeling the logic in a Microflow!
+Well done! Now we have all we need for the request and response to start modeling the logic in a microflow!
 
 ### Build the Microflow to invoke Stable DIffusion XL
 
@@ -829,11 +828,10 @@ We will build a Microflow for the Stable Diffusion model making use of the `Invo
 Since it will have the same structure, before looking at the step-by-step instructions, feel free to give it a go on your own!
 
 Steps to take:
-
 1. Let's start by adding the parameters. Add one for the `StableDiffusionRequest` and another one for the AWS Region enumeration (`ENUM_Region`).
-2. Next, from the **Toolbox**, add a **Export with mapping** activity to the Microflow and configure it to use the `EXM_StableDiffusion` export mapping. The Result should be stored in a **String variable** called `RequestBody`.
+2. Next, from the **Toolbox**, add a **Export with mapping** activity to the microflow and configure it to use the `EXM_StableDiffusion` export mapping. The Result should be stored in a **String variable** called `RequestBody`.
 
-![Export mapping in Microflow](resources/78_GetResponse1.png)
+![Export mapping in microflow](resources/78_GetResponse1.png)
 
 3. Add a **Create object** activity and create a `InvokeModelGenericRequest` object. Click **New** and add the following members:
    1. `RequestBody` : `$RequestBody`
@@ -842,26 +840,26 @@ Steps to take:
 
 ![Create InvokeModelGenericRequest](resources/79_GetResponse2.png)
 
-5. From the **Toolbox**, add the `GenerateStaticCredentials` or `GenerateTemporaryCredentials` action and provide the Region input parameter, if necessary.
+5. From the **Toolbox**, add the `GetStaticCredentials` or `GetTemporaryCredentials` action and provide the Region input parameter, if necessary.
 6. Add the **Invoke Model Generic** action. You can find it by searching for it in the **Toolbox**. Provide values for it's parameters. All should be available and therefore auto-fill. Set the **Object name** to `InvokeModelGenericResponse`.
 
 ![Credentials and Invoke Model Generic action](resources/80_GetResponse3.png)
 
 1. Add a **Create variable** activity and create a String variable that holds the response body, by setting `$InvokeModelGenericResponse/ResponseBody` as it's value. Call it `ResponseBody`.
 2. Add a **Import with mapping** activity and configure it to map the `$ResponseBody` variable to a `StableDiffusionResponse` Mendix object.
-3. Right click the `StableDiffusionResponse` object and select **Set as return value**.
+3.  Right click the `StableDiffusionResponse` object and select **Set as return value**.
 
-![Finished Microflow](resources/81_GetResponse4.png)
+![Finished microflow](resources/81_GetResponse4.png)
 
 The reusable Microflow to invoke the Stable Diffusion XL model is all set! In the next step, let's use it to enhance the Smart Notes Summarizer application with some images!
 
 ### Extend the Smart Notes Summarizer app
 
-Since we will be receiving an image, we need a place to store it. In Mendix, we need to create a new entity for that.
+Since we will be receiving an image, we need a place to store it. In Mendix, we need to create a new entity for that. 
 
-1. Navigate to the `BedrockLab_StartingPoint` module and open the **Domain model**.
-2. Create a new entity and place it next to the `NotesExtraction` entity.
-3. Double-click it to open its properties and enter `NotesImage` as the **Name**.
+1. Navigate to the `BedrockLab_StartingPoint` module and open the **Domain moedel**.
+2. Create a new entity and place it next to the `NotesExtraction` entity. 
+3. Double-click it to openit's properties and enter `NotesImage` as the **Name**.
 4. Because this entity should hold images, it needs to inherit from the `System.Image` entity, which is the parent of all other image entities in Mendix. To set that up, next to **Generalization** click **Select**.
 5. Search for `Image` and select the **Image** entity of the **System** module as generalization.
 6. Click **OK**.
@@ -874,8 +872,8 @@ Since we will be receiving an image, we need a place to store it. In Mendix, we 
 
 With having set up the entity, we can create the Microflow to generate an image for every note that gets uploaded.
 
-1. In the `BedrockLab_StartingPoint` module, expand the **Objects** folder.
-2. Right-click the **NotesExtraction** folder and select **Add Microflow** and call it `NotesExtraction_GenerateImage`.
+1. In the `BedrockLab_StartingPoint` module, expand the **Objects** folder. 
+2. Right-click the **NotesExtraction** folder and select **Add microflow** and call it `NotesExtraction_GenerateImage`.
 3. Add a parameter of type `Notes`.
 4. From the **Toolbox**, add a **Retrieve** activity and retrieve the `NotesExtraction` object over the **Notes_NotesExtraction** association.
 
@@ -885,12 +883,12 @@ With having set up the entity, we can create the Microflow to generate an image 
 
 ![AWS Region](resources/85_GenerateImage2.png)
 
-The next step would be to create the `StableDiffusionRequest` and then call the StableDiffusion_GetResponse Microflow. Before we do that, let's think about which prompt we should send to Stable Diffusion. We could just send the entire summary, but that would be quite long and not a precise instruction of how the image should look like. Instead, let's make use of the Claude Implementation that we have already set up, and let Claude formulate a prompt. We'll need a separate Microflow for that:
+The next step would be to create the `StableDiffusionRequest` and then call the StableDiffusion_GetResponse microflow. Before we do that, let's think about which prompt we should send to Stable Diffusion. We could just send the entire summary, but that would be quite long and not a precise instruction of how the image should look like. Instead, let's make use of the Claude Implementation that we have already set up, and let Claude formulate a prompt. We'll need a seperate microflow for that:
 
-1. Right click the `NotesExtraction` folder and click **Add Microflow** and call it `NotesExtraction_GenerateImagePrompt`.
+1. Right click the `NotesExtraction` folder and click **Add microflow** and call it `NotesExtraction_GenerateImagePrompt`.
 2. Add a parameter of type `NotesExtraction`.
 3. Add a parameter of type `ENUM_Region` (*enumeration*). **Warning:** If you use different regions for Claude and Stable Diffusion, you cannot pass the region as a parameter, instead create it in a variable in the beginning of the Microflow, as done in *step 5* of the previous block!
-4. From the **Toolbox**, add a **Create object** activity and create a `ClaudeRequest` object.
+4. From the **Toolbox**, add a **Create object** activity and create a `ClaudeRequest` object. 
 5. To make it create a nice prompt for Stable Diffusion, set it's **Prompt** attribute to:
 
         'Human: Based on the following text, create a prompt that can be used for an image generation AI model:
@@ -903,24 +901,24 @@ The next step would be to create the `StableDiffusionRequest` and then call the 
    3. **TopK**: `250`
    4. **TopP**: `1`
 7. Click **OK**.
-8. From the `BedrockImplementation` module --> **Claude** folder, drag the `Claude_GetResponse` action to the Microflow.
-9. Double-click it and pass the values for the parameters, as they should auto-fill. Set the **Object name** to `ClaudeResponse`.
+8. From the `BedrockImplementation` module --> **Claude** folder, drag the `Claude_GetResponse` action to the microflow. 
+9.  Double-click it and pass the values for the parameters, as they should auto-fill. Set the **Object name** to `ClaudeResponse`.
 
-![Building GenerateImagePrompt Microflow](resources/87_GenerateImage4.png)
+![Building GenerateImagePrompt microflow](resources/87_GenerateImage4.png)
 
 10. From the **Toolbox**, drag a **Create variable** activity to the Microflow. Set it's **Data type** to **String** and enter `$ClaudeResponse/Completion` as it's value.
 11. Call it `PromptByClaude` and click **OK**.
 12. Right-click the `PromptByClaude` variable and select **Set $PromptByClaude as return value**.
 
-![Complete GenerateImagePrompt Microflow](resources/88_GenerateImage5.png)
+![Complete GenerateImagePrompt microflow](resources/88_GenerateImage5.png)
 
-With that little addition, we can reuse the previous work to let the Claude model generate a (hopefully) good prompt for Stable Diffusion.
+With that little addition, we can reuse the previous work to let the Claude model generate a (hopefully) good prompt for Stable Diffusion. 
 Let's navigate back to the `NotesExtraction_GenerateImage` Microflow.
 
 1. Drag the newly created `NotesExtraction_GenerateImagePrompt` action from the **NotesExtraction** folder to the Microflow.
 2. Double-click it to pass the parameters and call it `PromptByClaude`.
 
-![PromptByClaude in Microflow](resources/89_GenerateImage6.png)
+![PromptByClaude in microflow](resources/89_GenerateImage6.png)
 
 3. From the **Toolbox**, add a **Create object** a activity and create a `StableDiffusionRequest` object. Provide the following values for the attributes:
    1. **CfgScale**: `10`
@@ -928,7 +926,7 @@ Let's navigate back to the `NotesExtraction_GenerateImage` Microflow.
    3. **Steps**: `50`
 4. Click **OK**.
 
-Remember the request structure we've built in the domain model? The *Prompt* is located in the `StableDiffusionPrompt` entity, which is associated to the `StableDiffusionRequest` entity.
+Remeber the request structure we've built in the domain model? The *Prompt* is located in the `StableDiffusionPrompt` entity, which is associated to the `StableDiffusionRequest` entity.
 
 5. From the **Toolbox**, add one more **Create object** activity and create a `StableDiffusionPrompt` object.
 6. For the `Prompt` attribute, pass the prompt generated by Claude, so `$PromptByClaude`.
@@ -936,51 +934,51 @@ Remember the request structure we've built in the domain model? The *Prompt* is 
 
 ![StableDiffusionPrompt](resources/90_GenerateImage7.png)
 
-1. From the `BedrockImplementation` module, **Stable Diffusion** folder, drag the `StableDiffusion_GetResponse` action to the Microflow.
-2. Double-click it and pass the parameters. Set the **Object name** to `StableDiffusionResponse`.
+1. From the `BedrockImplementation` module, **Stable Diffusion** folder, drag the `StableDiffusion_GetResponse` action to the Microflow. 
+2.  Double-click it and pass the parameters. Set the **Object name** to `StableDiffusionResponse`.
 
-![StableDiffusionResponse in Microflow](resources/91_GenerateImage8.png)
+![StableDiffusionResponse in microflow](resources/91_GenerateImage8.png)
 
 We have the response from Stable Diffusion available. Now, what's left is to convert it into a Mendix image object, that we can display on a page. The contents of the image are stored in the `Base64Image` attribute of the `StableDiffusionImageData` entity. We need to retrieve it to have it available in the Microflow.
 
-1. From the **Toolbox**, add a **Retrieve** activity.
-2. Use it to retrieve over the `StableDiffusionImageData_StableDiffusionResponse` association. This will return a **list** of `StableDiffusionImageData` objects, because we are retrieving over a **One-to-many** association.
+1. From the **Toolbox**, add a **Retrieve** activity. 
+2. Use it to retrieve over the `StableDiffusionImageData_StableDiffusionResponse` association. This will return a **list** of `StableDiffusionImageData` objects, because we are retrieving over a **One-to-many** association. 
 
 ![Retrieve StableDiffusionImageData](resources/92_GenerateImage9.png)
 
 We know there is only one result because we only sent one prompt. This means, we are only interested in the first (and only) object of that list.
 
-1. From the **Toolbox**, add a **List operation** activity.
+1. From the **Toolbox**, add a **List operation** activity. 
 2. Double-click it and for the **Operation** select `Head` from the dropdown.
 3. **List** should be set to `StableDiffusionImageDataList`, which is the only list available.
 4. Click **OK**.
 
-![List operation in Microflow](resources/93_GenerateImage10.png)
+![List operation in microflow](resources/93_GenerateImage10.png)
 
 We need to create a `NotesImage` object first to be able to store the image content there.
 
 1. From the **Toolbox**, add a **Create object** activity and create a `NotesImage` object and click **OK**.
-2. In the **Toolbox**, search for *Base64 decode to file* and drag the action with this name to the end of the Microflow. This action is part of the **Community Commons** module that you've imported at the beginning of this chapter.
+2. In the **Toolbox**, search for *Base64 decode to file* and drag the action with this name to the end of the Microflow. This action is part of the **Community Commons** module that you've imported at the beginning of this chapter. 
 3. Double-click it to open the configuration. For the **Encoded** input, click **Edit** and provide `$NewStableDiffusionImageData/Base64Image` as value. This is the base 64 string returned by Stable Diffusion.
-4. For the **Target File**, select `$NewNotesImage` from the dropdown, which is the object we just created.
+4. For the **Target File**, select `$NewNotesImage` from the dropwdown, which is the object we just created. 
 5. Click **OK**.
 
 ![Decode base64 to file](resources/94_GenerateImage11.png)
 
 We have the image now saved to a Mendix image object. Last to-do is to set the association from the `NotesExtraction` object.
 
-1. From the **Toolbox**, add a **Change object** activity.
+1. From the **Toolbox**, add a **Change object** activity. 
 2. Select `NotesExtraction` as the **Object**.
 3. In the **Action** section, set both **Commit** and **Refresh in client** to `Yes`.
 4. Select **New**, and then select the association `NotesExtraction_NotesImage` as the **Member** to change.
 5. Set `$NewNotesImage` as value and click **OK** twice.
 
-![Complete GenerateImage Microflow](resources/95_GenerateImage12.png)
+![Complete GenerateImage microflow](resources/95_GenerateImage12.png)
 
 And that is all the logic we need to generate images for the notes! To make it all work the `NotesExtraction_GenerateImage` Microflow must be called from the `ACT_Notes_Save` Microflow and then the page needs to be extended.
 
 1. Open the `ACT_Notes_Save` Microflow, it is located in the `BedrockLab_StartingPoint` module, --> **Pages** --> **Notes**.
-2. Drag the `NotesExtraction_GenerateImage` Microflow right in front of the `Close page` activity.
+2. Drag the `NotesExtraction_GenerateImage` Microflow right infront of the `Close page` activity.
 3. Double-click it to pass the `Notes` parameter.
 4. Save your work!
 
@@ -992,25 +990,25 @@ Now if we would upload an image of our notes, it would generate the image, howev
 
 1. Open the `NotesExtraction_Home` page, it is located in the `BedrockLab_StartingPoint` module, --> **Pages** --> **NotesExtraction**.
 2. From the **Toolbox**, drag a **Layout~~ grid** right above the `Tab container` on the right section of the page.
-3. Select *6|6* to have to equally large columns.
+3. Seelct *6|6* to have to equally large columns.
 
 ![Add Layout grid](resources/97_ExtendPage1.png)
 
 4. Drag the `Tab container` into the right column of the `Layout grid`.
 5. Double-click the left column, and set it's **Desktop width** to *Auto-fit content*. This will make the column as wide as it's content.
-6. From the **Toolbox**, drag an `Image` to the left column.
+6. From the **Toolbox**, drag an `Image` the left column.
 
 ![Use Layout grid](resources/98_ExtendPage2.png)
 
-7. Double-click it for the **Image source**, click **Select**.
+7. Double-click it for the **Image source**, click **Select**. 
 8. In the *Edit image* pop-up, set the **Image type** to *Dynamic*.
-9. Click **Select**, expand the `NotesExtraction_NotesImage` association and select `NotesImage` and click **OK**.
+9.  Click **Select**, expand the `NotesExtraction_NotesImage` association and select `NotesImage` and click **OK**.
 
 ![Set image source](resources/99_ExtendPage3.png)
 
-1. Navigate to the **Dimensions** tab.
-2. Change the **Width unit** to *Pixels* and enter `200` as the value for the Width. The Height should stay at auto to keep the aspect ratio of the image.
-3. Click **OK**.
+1.  Navigate to the **Dimensions** tab.
+2.  Change the **Width unit** to *Pixels* and enter `200` as the value for the Width. The Height should stay at auto to keep the aspect ratio of the image.
+3.  Click **OK**.
 
 ![Set image dimensions](resources/100_ExtendPage4.png)
 
@@ -1021,3 +1019,7 @@ Now we're all set! Click `Run locally` and open the app once it is ready. If you
 Upload the notes and once all the processing is done, you should be able to see a nice image next to the text!
 
 ![Running project with image](resources/101_End.png)
+
+
+
+
